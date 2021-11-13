@@ -1,17 +1,13 @@
-## Load and Save Files {#sec:load_save}
+## 加载和保存文件 {#sec:load_save}
 
-Having only data inside Julia programs and not being able to load or save it would be very limiting.
-Therefore, we start by mentioning how to store files to and load files from disk.
-We focus on CSV, see @sec:csv, and Excel, see @sec:excel, file formats since those are the most common data storage formats for tabular data.
+仅在 Julia 程序中使用数据非常有局限性，通常还需要能够加载或保存数据。
+因此，本节主要讨论如何存储文件到硬盘和从硬盘读取文件。
+我们重点关注 CSV 和 Excel 这两类最常见的数据文件格式，分别参见 @sec:csv 和 @sec:excel。
 
 ### CSV {#sec:csv}
 
-**C**omma-**s**eparated **v**alues (CSV) files are are very effective way to store tables.
-CSV files have two advantages over other data storage files.
-First, it does exactly what the name indicates it does, namely storing values by separating them using commas `,`.
-This acronym is also used as the file extension.
-So, be sure that you save your files using the ".csv" extension such as "myfile.csv".
-To demonstrate how a CSV file looks, we can install the [`CSV.jl`](http://csv.juliadata.org/latest/) package:
+**C**omma-**s**eparated-**v**alues (CSV) 文件是非常有效的表格存储方式。
+CSV 文件相比其他数据存储文件有两点优势。首先，正如名称所指示的那样，它使用逗号`,`来分隔存储值。此首字母缩写词也被用作文件扩展名。因此，请确保使用“.csv”扩展名（例如“myfile.csv”）保存文件。为了演示 CSV 文件的结构，安装 [`CSV.jl`](http://csv.juliadata.org/latest/) 包：
 
 ```
 julia> ]
@@ -19,13 +15,13 @@ julia> ]
 pkg> add CSV
 ```
 
-and load it via:
+并且通过以下方式导入：
 
 ```
 using CSV
 ```
 
-We can now use our previous data:
+现在可使用之前的数据：
 
 ```jl
 sco("
@@ -33,7 +29,7 @@ grades_2020()
 "; process=without_caption_label)
 ```
 
-and read it from a file after writing it:
+并在写入后从文件中读取：
 
 ```jl
 @sc write_grades_csv()
@@ -48,19 +44,19 @@ end # hide
 """)
 ```
 
-Here, we also see the second benefit of CSV data format: the data can be read by using a simple text editor.
-This differs from many alternative data formats which require proprietary software, e.g. Excel.
+上文还能看到 CSV 数据格式的第二个好处：可以使用简单的文本编辑器读取数据。
+这与许多需要专有软件的其他数据格式不同，例如 Excel。
 
-This works wonders, but what if our data **contains commas `,`** as values?
-If we were to naively write data with commas, it would make the files very hard to convert back to a table.
-Luckily, `CSV.jl` handles this for us automatically.
-Consider the following data with commas `,`:
+这很有效，但是如果我们的数据 ** 包含逗号 `,`** 作为值怎么办？
+如果我们天真地用逗号写入数据，那么文件将很难转换回表格。
+幸运的是，`CSV.jl` 会自动处理此问题。
+考虑以下带逗号`,`的数据：
 
 ```jl
 @sco grades_with_commas()
 ```
 
-If we write this, we get:
+如果写入文件，将得到：
 
 ```jl
 sco("""
@@ -75,11 +71,11 @@ end # hide
 """)
 ```
 
-So, `CSV.jl` adds quotation marks `"` around the comma-containing values.
-Another common way to solve this problem is to write the data to a **t**ab-**s**eparated **v**alues (TSV) file format.
-This assumes that the data doesn't contain tabs, which holds in most cases.
+因此，`CSV.jl` 在包含逗号的值周围添加引号 `"`。
+解决此问题的另一种常见方法是将数据写入 **t**ab-**s**eparated **v**alues (TSV) 文件格式。
+该格式假设数据不包含制表符，这一点在大多数情况下是成立的。
 
-Also, note that TSV files can also be read using a simple text editor, and these files use the ".tsv" extension.
+另请注意，也可以使用简单的文本编辑器读取 TSV 文件，这些文件使用“.tsv”扩展名。
 
 ```jl
 sco("""
@@ -93,7 +89,7 @@ end # hide
 """)
 ```
 
-Text file formats like CSV and TSV files can also be found that use other delimiters, such as semicolons ";", spaces "\ ", or even something as unusual as "π".
+像 CSV 和 TSV 这样的文本文件格式还可以使用其他分割符，例如分号“;”，空格“\ ”，甚至是像“π”这样不寻常的字符。
 
 ```jl
 sco("""
@@ -107,11 +103,11 @@ end # hide
 """)
 ```
 
-By convention, it's still best to give files with special delimiters, such as ";", the ".csv" extension.
+按照惯例，最好还是为文件指定特殊的分隔符，例如“;”，“.csv”扩展名。
 
-Loading CSV files using `CSV.jl` is done in a similar way.
-You can use `CSV.read` and specify in what kind of format you want the output.
-We specify a `DataFrame`.
+使用 `CSV.jl` 加载 CSV 文件的方式与此类似。
+您可以使用 `CSV.read` 并指定您想要的输出格式。
+这里指定为`DataFrame`。
 
 ```jl
 sco("""
@@ -122,7 +118,7 @@ end # hide
 """; process=without_caption_label)
 ```
 
-Conveniently, `CSV.jl` will automatically infer column types for us:
+方便地，`CSV.jl`将自动推断列类型：
 
 ```jl
 sco("""
@@ -133,7 +129,7 @@ end # hide
 """; process=string, post=output_block)
 ```
 
-It works even for far more complex data:
+它甚至适用于更复杂的数据：
 
 ```jl
 sco("""
@@ -149,16 +145,17 @@ end # hide
 """; process=string, post=output_block)
 ```
 
-These CSV basics should cover most use cases.
-For more information, see the [`CSV.jl` documentation](https://csv.juliadata.org/stable) and especially the [`CSV.File` constructor docstring](https://csv.juliadata.org/stable/#CSV.File).
+这些CSV基础应该涵盖大多数用例。
+关于更多信息，请参阅[`CSV.jl` 文档](https://csv.juliadata.org/stable)尤其是[`CSV.File` 构建 docstring](https://csv.juliadata.org/stable/#CSV.File)。
+
 
 ### Excel {#sec:excel}
 
-There are multiple Julia packages to read Excel files.
-In this book, we will only look at [`XLSX.jl`](https://github.com/felipenoris/XLSX.jl), because it is the most actively maintained package in the Julia ecosystem that deals with Excel data.
-As a second benefit, `XLSX.jl` is written in pure Julia, which makes it easy for us to inspect and understand what's going on under the hood.
+多个 Julia 包可以读取 Excel 文件。
+本节将只讨论 [`XLSX.jl`](https://github.com/felipenoris/XLSX.jl)，因为它是 Julia 生态系统中处理 Excel 数据的最积极维护的包。
+另外一个优点是，`XLSX.jl` 是用纯 Julia 编写的，这使得可以轻松地检查和理解指令背后发生的事情。
 
-Load `XLSX.jl` via
+加载 `XLSX.jl` 的方式是
 
 ```
 using XLSX:
@@ -167,19 +164,19 @@ using XLSX:
     writetable
 ```
 
-To write files, we define a little helper function for data and column names:
+为了写入文件，我们为数据和列名定义一个辅助函数：
 
 ```jl
 @sc write_xlsx("", DataFrame())
 ```
 
-Now, we can easily write the grades to an Excel file:
+现在，可以轻松地将成绩写入 Excel 文件：
 
 ```jl
 @sc write_grades_xlsx()
 ```
 
-When reading it back, we will see that `XLSX.jl` puts the data in a `XLSXFile` type and we can access the desired `sheet` much like a `Dict`:
+当成绩被读取回来时，我们将看到 `XLSX.jl` 将数据放在 `XLSXFile` 类型中，并且可以像访问 `Dict` 一样访问所需的 `sheet`：
 
 ```jl
 sco("""
@@ -201,5 +198,5 @@ s = """
 sco(s; process=without_caption_label)
 ```
 
-Notice that we cover just the basics of `XLSX.jl` but more powerful usage and customizations are available.
-For more information and options, see the [`XLSX.jl` documentation](https://felipenoris.github.io/XLSX.jl/stable/).
+请注意，本节只介绍了`XLSX.jl`的基础知识，但它还提供了更强大的用法和自定义功能。
+有关更多信息和选项，请参阅[`XLSX.jl` 文档](https://felipenoris.github.io/XLSX.jl/stable/).
