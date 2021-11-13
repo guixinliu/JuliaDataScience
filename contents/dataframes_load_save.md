@@ -153,7 +153,7 @@ end # hide
 
 多个 Julia 包可以读取 Excel 文件。
 本节将只讨论 [`XLSX.jl`](https://github.com/felipenoris/XLSX.jl)，因为它是 Julia 生态系统中处理 Excel 数据的最积极维护的包。
-第二个好处是，`XLSX.jl` 是用纯 Julia 编写的，这使得可以轻松地检查和理解指令背后发生的事情。
+另外一个优点是，`XLSX.jl` 是用纯 Julia 编写的，这使得可以轻松地检查和理解指令背后发生的事情。
 
 加载 `XLSX.jl` 的方式是
 
