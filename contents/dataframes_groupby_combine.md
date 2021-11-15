@@ -2,7 +2,7 @@
 
 在 R 编程语言中，@wickham2011split 推广了用于数据转换的 split-apply-combine 模式。
 在该模式中，我们先将数据 **split** 成不同组，然后对每一组 **apply** 一个或多个函数，最后 **combine** 每组的结果。
-`DataFrames.jl` 完全支持 split-apply-combine 模式 。
+`DataFrames.jl` 完全支持 split-apply-combine 模式。
 本节使用之前的学生成绩数据作为示例。
 假设想获得每个学生的平均成绩：
 
@@ -36,7 +36,7 @@ sco(s; process=without_caption_label)
 ```
 
 想象一下，如果没有 `groupby` 和 `combine` 函数，则需按照下文这样做。
-我们必须循环遍历数据以将其分割为多组，然后循环遍历每组以应用函数， **以及**循环遍历每组以收集最终结果。  
+我们必须循环遍历数据以将其分割为多组，然后循环遍历每组以应用函数，**以及** 循环遍历每组以收集最终结果。  
 因此，split-apply-combine 模式是值得掌握的技术。
 
 ### Multiple Source Columns {#sec:groupby_combine_multiple_source}
