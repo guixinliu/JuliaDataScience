@@ -36,7 +36,7 @@ sco(s; process=without_caption_label)
 ```
 
 想象一下，如果没有 `groupby` 和 `combine` 函数，则需按照下文这样做。
-我们必须循环遍历数据以将其分割为多组，然后循环遍历每组以应用函数，**以及** 循环遍历每组以收集最终结果。  
+我们必须循环遍历数据以将其分割为多组，然后循环遍历每组以应用函数，**以及** 循环遍历每组以收集最终结果。
 因此，split-apply-combine 模式是值得掌握的技术。
 
 ### Multiple Source Columns {#sec:groupby_combine_multiple_source}
