@@ -10,7 +10,7 @@
 @sco process=without_caption_label all_grades()
 ```
 
-按照该模式，先将数据集按照学生名称 **split** 为不同组，其次对每组数据 **apply** 均值函数，然后 **combine** 每组的结果。
+按照该模式，先将数据集按照学生名称 **split** 为不同组，其次对每组数据 **apply** 均值函数，最后 **combine** 每组的结果。
 
 在 split 步骤中使用的函数为 `groupby`，并将函数的第二个参数列 ID 指定为数据集分割的条件。
 
