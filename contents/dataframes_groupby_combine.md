@@ -1,31 +1,31 @@
-## Groupby and Combine {#sec:groupby_combine}
+## Groupby 和 Combine {#sec:groupby_combine}
 
-In the R programming language, @wickham2011split has popularized the so-called split-apply-combine strategy for data transformations.
-In essence, this strategy **splits** a dataset into distinct groups, **applies** one or more functions to each group, and then **combines** the result.
-`DataFrames.jl` fully supports split-apply-combine.
-We will use the student grades example like before.
-Suppose that we want to know each student's mean grade:
+在 R 编程语言中，@wickham2011split 推广了用于数据转换的 split-apply-combine 模式。
+在该模式中，我们先将数据 **split** 成不同组，然后对每一组 **apply** 一个或多个函数，最后 **combine** 每组的结果。
+`DataFrames.jl` 完全支持 split-apply-combine 模式。
+本节使用之前的学生成绩数据作为示例。
+假设想获得每个学生的平均成绩：
 
 ```jl
 @sco process=without_caption_label all_grades()
 ```
 
-The strategy is to **split** the dataset into distinct students, **apply** the mean function to each student, and **combine** the result.
+按照该模式，先将数据集按照学生名称 **split** 为不同组，其次对每组数据 **apply** 均值函数，最后 **combine** 每组的结果。
 
-The split is called `groupby` and we give as second argument the column ID that we want to split the dataset into:
+在 split 步骤中使用的函数为 `groupby`，并将函数的第二个参数列 ID 指定为数据集分割的条件。
 
 ```jl
 s = "groupby(all_grades(), :name)"
 sco(s; process=string, post=plainblock)
 ```
 
-We apply the `mean` function from Julia's standard library `Statistics` module:
+`mean` 函数来自 Julia 标准库中的 `Statistics` 模块:
 
 ```
 using Statistics
 ```
 
-To apply this function, use the `combine` function:
+应用此函数时，需调用 `combine` 函数：
 
 ```jl
 s = """
@@ -35,13 +35,13 @@ s = """
 sco(s; process=without_caption_label)
 ```
 
-Imagine having to do this without the `groupby` and `combine` functions.
-We would need to loop over our data to split it up into groups, then loop over each split to apply a function, **and** finally loop over each group to gather the final result.
-Therefore, the split-apply-combine technique is a great one to know.
+想象一下，如果没有 `groupby` 和 `combine` 函数，则需按照下文这样做。
+我们必须循环遍历数据以将其分割为多组，然后循环遍历每组以应用函数，**以及** 循环遍历每组以收集最终结果。
+因此，split-apply-combine 模式是值得掌握的技术。
 
 ### Multiple Source Columns {#sec:groupby_combine_multiple_source}
 
-But what if we want to apply a function to multiple columns of our dataset?
+但如果我们想将一个函数应用到多列数据，该如何操作？
 
 ```jl
 s = """
@@ -53,7 +53,7 @@ s = """
 sco(s; process=without_caption_label)
 ```
 
-This is accomplished in a similar manner:
+操作与之前类似：
 
 ```jl
 s = """
@@ -63,10 +63,10 @@ s = """
 sco(s; process=without_caption_label)
 ```
 
-Note that we've used the dot `.` operator before the right arrow `=>` to indicate that the `mean` has to be applied to multiple source columns `[:X, :Y]`.
+注意到，我们在右箭头 `=>` 前使用了 `.` 点运算符，这表示 `mean` 函数将应用到多个列 `[:X, :Y]`。
 
-To use composable functions, a simple way is to create a function that does the intended composable transformations.
-For instance, for a series of values, let's first take the `mean` followed by `round` to a whole number (also known as an integer `Int`):
+要在`combine`中使用组合函数，一种简单的方法是创建一个函数来执行预期的组合变换。
+例如，对于一组数据，在先应用 `mean`后调用 `round` 对值取整（即 `Int` ）。
 
 ```jl
 s = """
