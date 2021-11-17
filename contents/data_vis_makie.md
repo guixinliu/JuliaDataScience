@@ -1,54 +1,54 @@
-# Data Visualization with Makie.jl {#sec:DataVisualizationMakie}
+# 使用 Makie.jl 数据可视化 {#sec:DataVisualizationMakie}
 
-> From the japanese word Maki-e, which is a technique to sprinkle lacquer with gold and silver powder.
-> Data is the gold and silver of our age, so let's spread it out beautifully on the screen!
+> Maki-e 来源于日语， 它指的是一种在漆面上撒金粉和银粉的技术。
+> 数据就是我们这个时代的金和银，让我们在屏幕上制作美丽的数据图吧！
 >
-> _Simon Danisch, Creator of `Makie.jl`_
+> _Simon Danisch,  `Makie.jl` 创始人_
 
-[Makie.jl](http://makie.juliaplots.org/stable/index.html) is a high-performance, extendable, and multi-platform plotting ecosystem for the Julia programming language.
-In our opinion, it is the prettiest and most versatile plotting package.
+[Makie.jl](http://makie.juliaplots.org/stable/index.html) 是高性能，可扩展且跨平台的 Julia 语言绘图系统。
+我们认为，它是最漂亮和最通用的绘图包。
 
-Like many plotting packages, the code is split into multiple packages.
-`Makie.jl` is the front end package that defines all plotting functions required to create plot objects.
-These objects store all information about the plots, but still need to be converted to an image.
-To convert these plot objects to an image, you need one of the Makie back ends.
-By default, `Makie.jl` is reexported by every backend, so you only need to install and load the back end that you want to use.
+与其他绘图包一样，该库的代码分为多个包。
+`Makie.jl` 是绘图前端，它定义了所有创建绘图对象需要的函数。
+虽然这些对象存储了图像的所有信息，但还未转换为图片。
+因此，我们需要一个 Makie 后端。
+默认情况下，每一个后端都重新导出了 `Makie.jl`，因此只需要安装和加载所需的后端包。
 
-There are three main back ends which concretely implement all abstract rendering capabilities defined in Makie.
-One for non-interactive 2D publication-quality vector graphics: `CairoMakie.jl`.
-Another for interactive 2D and 3D plotting in standalone `GLFW.jl` windows (also GPU-powered), `GLMakie.jl`.
-And the third one, a WebGL-based interactive 2D and 3D plotting that runs within browsers, `WGLMakie.jl`. [See Makie's documentation for more](http://makie.juliaplots.org/stable/documentation/backends_and_output/).
+主要有三个后端实现了 Makie 中的所有抽象渲染功能。
+第一个后端能够绘制 2D 非交互式的出版物质量级矢量图：`CairoMakie.jl`。
+另一个后端是交互式 2D 和 3D 绘图库 `GLFW.jl`（支持 GPU），`GLMakie.jl`。
+第三个后端是基于 WebGL 的交互式 2D 和 3D 绘图库 `WGLMakie.jl`，它运行在浏览器中。[查阅 Makie 文档了解更多](http://makie.juliaplots.org/stable/documentation/backends_and_output/)。
 
-In this book we will only show examples for `CairoMakie.jl` and `GLMakie.jl`.
+本书将只介绍一些 `CairoMakie.jl` 和 `GLMakie.jl` 的例子。
 
-You can activate any backend by using the appropriate package and calling its `activate!` function.
-For example:
+使用某绘图后端的方法是 `using` 该后端并调用 `activate!` 函数。
+示例如下：
 
 ```
 using GLMakie
 GLMakie.activate!()
 ```
 
-Now, we will start with publication-quality plots.
-But, before going into plotting it is important to know how to save our plots.
-The easiest option to `save` a figure `fig` is to type `save("filename.png", fig)`.
-Other formats are also available for `CairoMakie.jl`, such as `svg` and `pdf`.
-The resolution of the output image can easily be adjusted by passing extra arguments.
-For example, for vector formats you specify `pt_per_unit`:
+现在可以开始绘制出版质量级的图。
+但是，在绘图之前，应知道如何保存。
+`save` 图片 `fig` 的最简单方法是 `save("filename.png", fig)`。
+`CairoMakie.jl` 也支持保存为其他格式，如 `svg` 和 `pdf`。
+通过传递指定的参数可以轻松地改变图片的分辨率。
+对于矢量格式，指定的参数为 `pt_per_unit`。例如：
 
 ```
 save("filename.pdf", fig; pt_per_unit=2)
 ```
 
-or
+或
 
 ```
 save("filename.pdf", fig; pt_per_unit=0.5)
 ```
 
-For `png`'s you specify `px_per_unit`.
-See [Backends & Output](https://makie.juliaplots.org/stable/documentation/backends_and_output/) for details.
+对于 `png`，则指定 `px_per_unit`。
+查阅 [后端 & 输出](https://makie.juliaplots.org/stable/documentation/backends_and_output/) 可获得更多详细信息。
 
-Another important issue is to actually visualize your output plot.
-Note that for `CairoMakie.jl` the Julia REPL is not able to show plots, so you will need an IDE (Integrated Development Environment) such as VSCode, Jupyter or Pluto that supports `png` or `svg` as output.
-On the other hand, `GLMakie.jl` can open interactive windows, or alternatively display bitmaps inline if `Makie.inline!(true)` is called.
+另一重要问题是如何可视化输出数据图。
+在使用 `CairoMakie.jl` 时，Julia REPL 不支持显示图片， 所以你还需要 IDE（Integrated Development Environment，集成开发环境），例如支持 `png` 或 `svg` 作为输出的 VSCode，Jupyter 或 Pluto。
+另一个包 `GLMakie.jl` 则能够创建交互式窗口，或在调用 `Makie.inline!(true)` 时在行间显示位图。
