@@ -1,6 +1,6 @@
 ## CairoMakie.jl {#sec:cairomakie}
 
-Let's start with our first plot, some scatter points with lines between them:
+我们开始绘制的第一张图是标注了散点的直线：
 
 ```
 using CairoMakie
@@ -19,11 +19,11 @@ s = """
 sco(s)
 ```
 
-Note that the previous plot is the default output, which we probably need to tweak by using axis names and labels.
+注意前面的图采用默认输出样式，因此需要使用轴名称和轴标签进一步调整。
 
-Also note that every plotting function like `scatterlines` creates and returns a new `Figure`, `Axis` and `plot` object in a collection called `FigureAxisPlot`.
-These are known as the `non-mutating` methods.
-On the other hand, the `mutating` methods (e.g. `scatterlines!`, note the `!`) just return a plot object which can be appended into a given `axis` or the `current_figure()`.
+同时注意每一个像 `scatterlines` 这样的绘图函数都创建了一个 `FigureAxisPlot` 列表，其中包含 `Figure`， `Axis` 和 `plot` 对象。
+这些函数也被称为 `non-mutating` 方法。
+另一方面， `mutating` 方法（例如 `scatterlines!`，注意多了 `!`) 仅返回一个 plot 对象，它可以被添加到给定的 `axis` 或 `current_figure()` 中。
 
-The next question that one might have is: how do I change the color or the marker type?
-This can be done via `attributes`, which we do in the next section.
+下一个问题是如何改变颜色或标记的类型？
+这可以通过 `attributes` 实现， 将在下一节讨论。
