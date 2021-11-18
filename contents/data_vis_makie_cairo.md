@@ -21,7 +21,7 @@ sco(s)
 
 注意前面的图采用默认输出样式，因此需要使用轴名称和轴标签进一步调整。
 
-同时注意每一个像 `scatterlines` 这样的绘图函数都创建了一个 `FigureAxisPlot` 集合，其中包含 `Figure`， `Axis` 和 `plot` 对象。
+同时注意每一个像 `scatterlines` 这样的绘图函数都创建了一个 `FigureAxisPlot` 列表，其中包含 `Figure`， `Axis` 和 `plot` 对象。
 这些函数也被称为 `non-mutating` 方法。
 另一方面， `mutating` 方法（例如 `scatterlines!`，注意多了 `!`) 仅返回一个 plot 对象，它可以被添加到给定的 `axis` 或 `current_figure()` 中。
 

@@ -1,4 +1,4 @@
-# 使用 Makie.jl 数据可视化 {#sec:DataVisualizationMakie}
+# 使用 Makie.jl 做数据可视化 {#sec:DataVisualizationMakie}
 
 > Maki-e 来源于日语， 它指的是一种在漆面上撒金粉和银粉的技术。
 > 数据就是我们这个时代的金和银，让我们在屏幕上制作美丽的数据图吧！
@@ -10,18 +10,18 @@
 
 与其他绘图包一样，该库的代码分为多个包。
 `Makie.jl` 是绘图前端，它定义了所有创建绘图对象需要的函数。
-虽然这些对象存储了图像的所有信息，但还未转换为图片。
+虽然这些对象存储了绘图所需的全部信息，但还未转换为图片。
 因此，我们需要一个 Makie 后端。
-默认情况下，每一个后端都重新导出了 `Makie.jl`，因此只需要安装和加载所需的后端包。
+默认情况下，每一个后端都将 `Makie.jl` 中的API都重新导出了，因此只需要安装和加载所需的后端包即可。
 
-主要有三个后端实现了 Makie 中的所有抽象渲染功能。
+目前主要有三个后端实现了 Makie 中定义的所有抽象类型的渲染功能。
 第一个后端能够绘制 2D 非交互式的出版物质量级矢量图：`CairoMakie.jl`。
 另一个后端是交互式 2D 和 3D 绘图库 `GLFW.jl`（支持 GPU），`GLMakie.jl`。
 第三个后端是基于 WebGL 的交互式 2D 和 3D 绘图库 `WGLMakie.jl`，它运行在浏览器中。[查阅 Makie 文档了解更多](http://makie.juliaplots.org/stable/documentation/backends_and_output/)。
 
 本书将只介绍一些 `CairoMakie.jl` 和 `GLMakie.jl` 的例子。
 
-使用某绘图后端的方法是 `using` 该后端并调用 `activate!` 函数。
+使用任一绘图后端的方法是 `using` 该后端并调用 `activate!` 函数。
 示例如下：
 
 ```
