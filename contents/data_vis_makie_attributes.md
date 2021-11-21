@@ -32,7 +32,7 @@ sco(s)
 `Axis` 同样有一系列属性，典型的有 `backgroundcolor`， `xgridcolor` 和 `title`。
 使用 `help(Axis)` 可查看所有属性。
 
-所以，我们将在下一张图同时调用一些属性，如下所示：
+在接下来这张图里，我们将设置一些属性：
 
 ```jl
 s = """
