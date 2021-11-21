@@ -149,7 +149,7 @@ sco(s)
 为了在图上添加 `Legend` 和 `Colorbar`，需将 `FigureAxisPlot` 元组分解为 `fig, ax, pltobj`。
 我们将在 @sec:makie_layouts 讨论有关布局选项的更多细节。
 
-通过一些基本且有趣的例子，我们展示了如何使用'Makie.jl'，现在你可能想知道：还能做什么？
+通过一些基本且有趣的例子，我们展示了如何使用`Makie.jl`，现在你可能想知道：还能做什么？
 `Makie.jl` 都还有哪些绘图函数？
 为了回答此问题，一个 _cheat sheet_ 如 @fig:cheat_sheet_cairomakie 所示。
 使用 `CairoMakie.jl` 后端可以轻松绘制这些图。
