@@ -161,5 +161,5 @@ sco(s)
 
 ![Plotting functions: Cheat Sheet. Output given by GLMakie.](images/GLMakiePlottingFunctionsHide.png){#fig:cheat_sheet_glmakie}
 
-现在，我们已经大致了解到能做什么。接下来应该掉头然后继续研究基础知识。
+现在，我们已经大致了解到能做什么。接下来应该掉过头来继续研究基础知识。
 是时候学习如何改变图的整体外观了。
