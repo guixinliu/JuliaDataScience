@@ -76,7 +76,7 @@ s = """
 sco(s)
 ```
 
-通过组合 `left(l), center(c), right(r)` 和 `bottom(b), center(c), top(t)` 还可以在指定其他位置。
+通过组合 `left(l), center(c), right(r)` 和 `bottom(b), center(c), top(t)` 还可以再指定其他位置。
 例如，使用`:lt` 指定为左上角。
 
 然而，仅仅为两条曲线编写这么多代码是比较复杂的。
