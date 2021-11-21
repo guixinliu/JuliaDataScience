@@ -29,7 +29,7 @@ sco(s)
 例如，Figure 的属性有 `backgroundcolor`，`resolution`，`font` 和 `fontsize` 以及 `figure_padding`。 其中 `figure_padding` 改变了图像周围的空白区域，如图 (@fig:custom_plot) 中的灰色区域所示。
 它使用一个数字指定所有边的范围，或使用四个数的元组表示上下左右。
 
-`Axis` 同样有一系列属性，其中一些是 `backgroundcolor`， `xgridcolor` 和 `title`。
+`Axis` 同样有一系列属性，典型的有 `backgroundcolor`， `xgridcolor` 和 `title`。
 使用 `help(Axis)` 可查看所有属性。
 
 所以，我们将在下一张图同时调用一些属性，如下所示：
