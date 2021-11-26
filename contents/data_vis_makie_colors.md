@@ -1,32 +1,29 @@
-## Colors and Colormaps {#sec:makie_colors}
+## 颜色和颜色图（Colormap）{#sec:makie_colors}
 
-Choosing an appropiate set of colors or colorbar for your plot is an essential part when presenting results.
-Using [Colors.jl](https://github.com/JuliaGraphics/Colors.jl) is supported in `Makie.jl`
-so that you can use [named colors](https://juliagraphics.github.io/Colors.jl/latest/namedcolors/) or pass `RGB` or `RGBA` values.
-Additionally, colormaps from [ColorSchemes.jl](https://github.com/JuliaGraphics/ColorSchemes.jl) and [PerceptualColourMaps.jl](https://github.com/peterkovesi/PerceptualColourMaps.jl) can also be used.
-It is worth knowing that you can reverse a colormap by doing `Reverse(:colormap_name)`
-and obtain a transparent color or colormap with `color=(:red,0.5)` and `colormap=(:viridis, 0.5)`.
+在展示结果时，其中重要的一步是为图选择一组合适的颜色或 colorbar。
+`Makie.jl` 支持使用 [Colors.jl](https://github.com/JuliaGraphics/Colors.jl) ，因此你可以使用 [named colors](https://juliagraphics.github.io/Colors.jl/latest/namedcolors/) 而不是传递 `RGB` 或 `RGBA` 值。
+另外，也可以使用 [ColorSchemes.jl](https://github.com/JuliaGraphics/ColorSchemes.jl) 和 [PerceptualColourMaps.jl](https://github.com/peterkovesi/PerceptualColourMaps.jl) 中的颜色图。
+值得了解的是，可以使用 `Reverse(:colormap_name)` 反转颜色图 ，也可以通过 `color=(:red,0.5)` and `colormap=(:viridis, 0.5)` 获得透明的颜色或颜色图。
 
-Different use cases will be shown next. Then we will difine a custom theme with new colors and a colorbar palette.
+下文介绍不同的用例。 接下来使用新的颜色和颜色栏（Colorbar）调色盘来创建自定义主题。
 
-By default `Makie.jl` has a predefined set of colors in order to cycle trough them automatically.
-As shown in the previous figures, where no specific color was set.
-Overwriting these defaults is done by calling the keyword `color` in the plotting function and specifying a new color via a `Symbol` or `String`.
-See this in action in the following example:
+默认情况下， `Makie.jl` 已经预定义一组颜色，这是为了自动循环该组颜色。
+之前的图因此并未设置任何特定颜色。
+覆盖这些默认颜色的方法是，在绘图函数中调用 `color` 关键字并使用 `Symbol` 或 `String` 指定新的颜色。
+该操作如下所示：
 
 ```jl
 @sco JDS.set_colors_and_cycle()
 ```
 
-Where, in the first two lines we have used the keyword `color` to specify our color.
-The rest is using the default cycle set of colors.
-Later, we will learn how to do a custom cycle.
+通过`color` 关键字指定了上例前两条曲线的颜色。
+其余使用默认的颜色集。
+稍后将学习如何使用自定义颜色循环。
 
-Regarding colormaps, we are already familiar with the keyword `colormap` for heatmaps and scatters.
-Here, we show that a colormap can also be specified via a `Symbol` or a `String`, similar to colors.
-Or, even a vector of `RGB` colors.
-Let's do our first an example by calling colormaps as a `Symbol`, `String` and `cgrad` for categorical values.
-See `?cgrad` for more information.
+关于颜色图，我们已经非常熟悉用于热力图和散点图的 `colormap`。下面展示的是，颜色图也可以像颜色那样通过 `Symbol` 或 `String` 进行指定。
+此外，也可以是 `RGB` 颜色的向量。
+下面是第一个例子，通过 `Symbol`， `String` 和分类值的 `cgrad` 来指定颜色图。
+输入 `?cgrad` 查看更多信息。
 
 ```jl
 scolor = """
@@ -45,8 +42,8 @@ scolor = """
 sco(scolor)
 ```
 
-When setting a `colorrange` usually the values outside this range are colored with the first and last color from  the colormap.
-However, sometimes is better to specify the color you want at both ends. We do that with `highclip` and `lowclip`:
+当设置 `colorrange` 后，超出此范围的颜色值会被相应地设置为颜色图的第一种和最后一种颜色。
+但是，有时最好自行指定两端的颜色。这可以通过 `highclip` 和 `lowclip` 实现：
 
 ```
 using ColorSchemes
@@ -70,8 +67,8 @@ s = """
 sco(s)
 ```
 
-But we mentioned that also `RGB` vectors are valid options.
-For our next example you could pass the custom colormap _perse_ or use `cgrad` to force a categorical `Colorbar`.
+另外 `RGB` 向量也是合法的选项。
+在下面的例子中， 你可以传递一个自定义颜色图 _perse_ 或使用 `cgrad` 来创建分类值的 `Colorbar`。
 
 ```
 using Colors, ColorSchemes
@@ -98,12 +95,12 @@ scat = """
 sco(scat)
 ```
 
-Lastly, the ticks in the colorbar for the categorial case are not centered by default in each color.
-This is fixed by passing custom ticks, as in `cbar.ticks = (positions, ticks)`.
-The last situation is when passing a tuple of two colors to `colormap` as symbols, strings or a mix.
-You will get an interpolated colormap between these two colors.
+最后，分类值的颜色栏标签默认不在每种颜色间居中。
+添加自定义标签可修复此问题，即 `cbar.ticks = (positions, ticks)`。
+最后一种情况是传递颜色的元组给 `colormap`，其中颜色可以通过 `Symbol`， `String` 或它们的混合指定。
+然后将会得到这两组颜色间的插值颜色图。
 
-Also, hexadecimal coded colors are also accepted. So, on top or our heatmap let's put one semi-transparent point using this.
+另外，也支持十六进制编码的颜色作为输入。因此作为示范，下例将在热力图上放置一个半透明的标记。
 
 ```jl
 s2color2 = """
@@ -123,18 +120,18 @@ s2color2 = """
 sco(s2color2)
 ```
 
-### Custom cycle
+### 自定义颜色循环
 
-Here, we could define a global `Theme` with a new cycle for colors, however that is **not the recommend way** to do it.
-It's better to define a new theme and use as shown before.
-Lets define a new one with a `cycle` for `:color`, `:linestyle`, `:marker` and a new `colormap` default.
-Lets add this new attributes to our previous `publication_theme`.
+可以通过新的颜色循环定义全局 `Theme` ，但通常 **不建议** 这样做。
+更好的做法是定义新的主题并像上节那样使用它。
+定义带有 `:color`， `:linestyle`， `:marker` 属性的新 `cycle` 和默认的 `colormap` 。
+下面为之前的 `publication_theme` 增加一些新的属性。
 
 ```jl
 @sc new_cycle_theme()
 ```
 
-And apply it to a plotting function like the following:
+然后将它应用到绘图函数中，如下所示:
 
 ```jl
 @sc scatters_and_lines()
@@ -152,5 +149,5 @@ s = """
 sco(s)
 ```
 
-At this point you should be able to have **complete control** over your colors, line styles, markers and colormaps for your plots.
-Next, we will dive into how to manage and control **layouts**.
+此时，通过颜色，曲线样式，标记和颜色图，你已经能够 **完全控制** 绘图结果。
+下一部分将讨论如何管理和控制 **布局**。
