@@ -1,4 +1,4 @@
-## Themes {#sec:themes}
+## 主题 {#sec:themes}
 
 有多种方式可以改变图的整体外观。你可以使用 [预定义主题](http://makie.juliaplots.org/stable/documentation/theming/predefined_themes/index.html) 或自定义的主题。例如，通过 `with_theme(your_plot_function, theme_dark())` 使用预定义的暗色主题。另外，也可以使用 `Theme(kwargs)` 构建你自己的主题或使用 `update_theme!(kwargs)` 更新当前激活的主题。
 
@@ -14,8 +14,9 @@ y = cumsum(randn(6, 6), dims=2)
 )
 ```
 
-本例随机生成了一个大小为 `(20,20)` 的矩阵，以便于绘制一张 heatmap。
-本例也指定了 $x$ 和 $y$ 的范围。
+
+本例随机生成了一个大小为 `(20,20)` 的矩阵，以便于绘制一张热力图（heatmap）。
+同时本例也指定了 $x$ 和 $y$ 的范围。
 
 ```jl
 sco(
