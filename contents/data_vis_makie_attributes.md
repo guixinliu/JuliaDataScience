@@ -157,7 +157,7 @@ sco(s)
 ![Plotting functions: Cheat Sheet. Output given by Cairomakie.](images/makiePlottingFunctionsHide.png){#fig:cheat_sheet_cairomakie}
 
 @fig:cheat_sheet_glmakie 展示了 `GLMakie.jl` 的_cheat sheet_ ，这些函数支持绘制大多数 3D 图。
-这些将在 @sec:glmakie 进一步讨论。
+这些将在 @sec:glmakie  进一步讨论。
 
 ![Plotting functions: Cheat Sheet. Output given by GLMakie.](images/GLMakiePlottingFunctionsHide.png){#fig:cheat_sheet_glmakie}
 
