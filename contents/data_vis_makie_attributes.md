@@ -1,8 +1,8 @@
-## 属性 {#sec:datavisMakie_attributes}
+## Attributes {#sec:datavisMakie_attributes}
 
-使用 `attributes` 可以创建自定义的图。
-设置属性可以使用多个关键字参数。
-每个 plot 对象的 `attributes` 列表可以通过以下方式查看：
+A custom plot can be created by using `attributes`.
+The attributes can be set through keyword arguments.
+A list of `attributes` for every plotting object can be viewed via:
 
 ```jl
 s = """
@@ -13,10 +13,10 @@ s = """
 sco(s)
 ```
 
-或者调用 `pltobject.attributes.attributes` 返回对象属性的`Dict` 。
+Or as a `Dict` calling `pltobject.attributes.attributes`.
 
-对于任一给定的绘图函数，都能在 `REPL` 中以 `?lines` 或 `help(lines)` 的形式获取帮助。Julia将输出该函数的相应属性，并简要说明如何使用该函数。
-关于 `lines` 的例子如下：
+Asking for help in the `REPL` as `?lines` or `help(lines)` for any given plotting function will show you their corresponding attributes plus a short description on how to use that specific function.
+For example, for `lines`:
 
 ```jl
 s = """
@@ -25,14 +25,14 @@ s = """
 sco(s)
 ```
 
-不仅 plot 对象有属性，`Axis` 和 `Figure` 对象也有属性。
-例如，Figure 的属性有 `backgroundcolor`，`resolution`，`font` 和 `fontsize` 以及 `figure_padding`。 其中 `figure_padding` 改变了图像周围的空白区域，如图 (@fig:custom_plot) 中的灰色区域所示。
-它使用一个数字指定所有边的范围，或使用四个数的元组表示上下左右。
+Not only the plot objects have attributes, also the `Axis` and `Figure` objects do.
+For example, for Figure, we have `backgroundcolor`, `resolution`, `font` and `fontsize` and the `figure_padding` which changes the amount of space around the figure content, see the grey area in the plot, Figure (@fig:custom_plot).
+It can take one number for all sides, or a tuple of four numbers for left, right, bottom and top.
 
-`Axis` 同样有一系列属性，典型的有 `backgroundcolor`， `xgridcolor` 和 `title`。
-使用 `help(Axis)` 可查看所有属性。
+`Axis` has a lot more, some of them are  `backgroundcolor`, `xgridcolor` and `title`.
+For a full list just type `help(Axis)`.
 
-在接下来这张图里，我们将设置一些属性：
+Hence, for our next plot we will call several attributes at once as follows:
 
 ```jl
 s = """
@@ -51,11 +51,12 @@ s = """
 sco(s)
 ```
 
-此例已经包含了大多数用户经常会用到的属性。
-或许在图上加一个 `legend` 会更好，这在有多条曲线时尤为有意义。
-所以，向图上 `append` 另一个 `plot object` 并且通过调用 `axislegend` 添加对应的图例。
-它将收集所有 plot 函数中的 `labels`， 并且图例默认位于图的右上角。
-本例调用了 `position=:ct` 参数，其中 `:ct` 表示图例将位于 `center`和 `top`， 如图 @fig:custom_plot_leg 所示：
+This example has already most of the attributes that most users will normally use.
+Probably, a `legend` will also be good to have.
+Which for more than one function will make more sense.
+So, let's `append` another mutation `plot object` and add the corresponding legends by calling `axislegend`.
+This will collect all the `labels` you might have passed to your plotting functions and by default will be located in the right top position.
+For a different one, the `position=:ct` argument is called, where `:ct` means let's put our label in the `center` and at the `top`,  see Figure @fig:custom_plot_leg:
 
 ```jl
 s = """
@@ -76,14 +77,14 @@ s = """
 sco(s)
 ```
 
-通过组合 `left(l), center(c), right(r)` 和 `bottom(b), center(c), top(t)` 还可以再指定其他位置。
-例如，使用`:lt` 指定为左上角。
+Other positions are also available by combining `left(l), center(c), right(r)` and `bottom(b), center(c), top(t)`.
+For instance, for left top, use `:lt`.
 
-然而，仅仅为两条曲线编写这么多代码是比较复杂的。
-所以，如果要以相同的样式绘制一组曲线，那么最好指定一个主题。
-使用 `set_theme!()` 可实现该操作，如下所示。
+However, having to write this much code just for two lines is cumbersome.
+So, if you plan on doing a lot of plots with the same general aesthetics, then setting a theme will be better.
+We can do this with `set_theme!()` as the following example illustrates.
 
-使用 `set_theme!(kwargs)`定义的新配置，重新绘制之前的图：
+Plotting the previous figure should take the new default settings defined by `set_theme!(kwargs)`:
 
 ```jl
 s = """
@@ -106,15 +107,15 @@ s = """
 sco(s)
 ```
 
-倒数第二行的 `set_theme!()` 会将主题重置到 Makie 的默认设置。
-有关 `themes` 的更多内容请转到 @sec:themes。
+Note that the last line is `set_theme!()`, which will reset the default settings of Makie.
+For more on `themes` please go to @sec:themes.
 
-在进入下节前， 值得先看一个例子：将多个参数所组成的 `array` 传递给绘图函数来配置属性。
-例如，使用 `scatter` 绘图函数绘制气泡图。
+Before moving on into the next section, it's worthwhile to see an example where an `array` of attributes are passed at once to a plotting function.
+For this example, we will use the `scatter` plotting function to do a bubble plot.
 
-本例随机生成 100 行 3 列的 `array` ，这些数据满足正态分布。
-其中第一列表示 `x` 轴上的位置，第二列表示 `y` 轴上的位置，第三列表示与每一点关联的属性值。
-例如可以用来指定不同的 `color` 或者不同的标记大小。气泡图就可以实现相同的操作。
+The data for this could be an `array` with 100 rows and 3 columns, here we generated these at random from a normal distribution.
+Here, the first column could be the positions in the `x` axis, the second one the positions in `y` and the third one an intrinsic associated value for each point.
+The later could be represented in a plot by a different `color` or with a different marker size. In a bubble plot we can do both.
 
 ```jl
 s = """
@@ -126,7 +127,7 @@ s = """
 sco(s)
 ```
 
-对应的图 @fig:bubble 如下所示:
+Next, the corresponding plot can be seen in @fig:bubble:
 
 ```jl
 s = """
@@ -146,20 +147,20 @@ s = """
 sco(s)
 ```
 
-为了在图上添加 `Legend` 和 `Colorbar`，需将 `FigureAxisPlot` 元组分解为 `fig, ax, pltobj`。
-我们将在 @sec:makie_layouts 讨论有关布局选项的更多细节。
+where we have decomposed the tuple `FigureAxisPlot` into `fig, ax, pltobj`, in order to be able to add a `Legend` and `Colorbar` outside of the plotted object.
+We will discuss layout options in more detail in @sec:makie_layouts.
 
-通过一些基本且有趣的例子，我们展示了如何使用`Makie.jl`，现在你可能想知道：还能做什么？
-`Makie.jl` 都还有哪些绘图函数？
-为了回答此问题，我们制作了一个 _cheat sheet_ 如 @fig:cheat_sheet_cairomakie 所示。
-使用 `CairoMakie.jl` 后端可以轻松绘制这些图。
+We have done some basic but still interesting examples to show how to use `Makie.jl` and by now you might be wondering: what else can we do?
+What are all the possible plotting functions available in `Makie.jl`?
+To answer this question, a _cheat sheet_ is shown in @fig:cheat_sheet_cairomakie.
+These work especially well with `CairoMakie.jl` backend.
 
 ![Plotting functions: Cheat Sheet. Output given by Cairomakie.](images/makiePlottingFunctionsHide.png){#fig:cheat_sheet_cairomakie}
 
-@fig:cheat_sheet_glmakie 展示了 `GLMakie.jl` 的_cheat sheet_ ，这些函数支持绘制大多数 3D 图。
-这些将在 @sec:glmakie  进一步讨论。
+For completeness, in @fig:cheat_sheet_glmakie, we show the corresponding functions _cheat sheet_ for `GLMakie.jl`, which supports mostly 3D plots.
+Those will be explained in detail in @sec:glmakie.
 
 ![Plotting functions: Cheat Sheet. Output given by GLMakie.](images/GLMakiePlottingFunctionsHide.png){#fig:cheat_sheet_glmakie}
 
-现在，我们已经大致了解到能做什么。接下来应该掉过头来继续研究基础知识。
-是时候学习如何改变图的整体外观了。
+Now, that we have an idea of all the things we can do, let's go back and continue with the basics.
+It's time to learn how to change the general appearance of our plots.
