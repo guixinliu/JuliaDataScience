@@ -121,7 +121,7 @@ using Dates
 
 ### 嵌套 `Axis` (_subplots_)
 
-准确定义一组 `Axis` (_subplots_) 是可行的。 因此可以使用一组 `Axis` 构造具有多行多列的图。
+精准定义一组 `Axis` (_subplots_) 也是可行的， 可以使用一组 `Axis` 构造具有多行多列的图。
 例如，下面展示了一组较复杂的 `Axis`：
 
 ```jl
