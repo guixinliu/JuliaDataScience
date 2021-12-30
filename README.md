@@ -13,9 +13,9 @@
 [![Code Style: Blue](https://img.shields.io/badge/code%20style-blue-4495d1.svg)](https://github.com/invenia/BlueStyle)
 [![Site Analytics](https://img.shields.io/badge/site-analytics-blueviolet)](https://app.usefathom.com/share/eejxhkte/julia+data+science)
 
-You can read the full book on <https://juliadatascience.io>.
+本书的中文译本提供了 [在线阅读版](https://cn.julialang.org/JuliaDataScience/) 和 [PDF离线阅读版](https://cn.julialang.org/JuliaDataScience/juliadatascience.pdf).
 
-This book is also published at [Amazon.com](https://www.amazon.com/dp/B09KMRKQ96/).
+此外，本书的英文版也可以在 [Amazon.com](https://www.amazon.com/dp/B09KMRKQ96/) 上购买阅读。
 
 ## LICENSE
 
