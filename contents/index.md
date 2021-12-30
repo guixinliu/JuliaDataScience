@@ -9,7 +9,7 @@ Welcome! 这是一本关于 **[Julia](https://julialang.org) 数据科学** 的�
 当然，我们也希望能对工业界有用。
 你可以使用键盘上的箭头键（左/右）浏览电子书。
 
-此译本主要由 [@guixinliu](https://github.com/guixinliu) 完成， [@findmyway](https://github.com/findmyway) 提供了审校, 其源码公开在 [GitHub](https://github.com/JuliaCN/JuliaDataScience){target="_blank"}，如果你在阅读过程中有任何问题和建议，欢迎前往创建issue。 此外，你也可以下载[PDF版的中文译本](https://cn.julialang.org/JuliaDataScience/juliadatascience.pdf)方便离线阅读。
+此译本主要由 [guixinliu](https://github.com/guixinliu) 完成， [findmyway](https://github.com/findmyway) 提供了审校, 其源码公开在 [GitHub](https://github.com/JuliaCN/JuliaDataScience){target="_blank"}，如果你在阅读过程中有任何问题和建议，欢迎前往创建issue。 此外，你也可以下载[PDF版的中文译本](https://cn.julialang.org/JuliaDataScience/juliadatascience.pdf)方便离线阅读。
 
 本书的英文版可以在其官网[在线阅读](https://juliadatascience.io/)或者获取[英文PDF版](https://juliadatascience.io/juliadatascience.pdf)离线阅读。此外，本书也同时发布在 [Amazon.com](https://www.amazon.com/dp/B09KMRKQ96/)。
 
