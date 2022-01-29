@@ -1,5 +1,26 @@
 # Welcome {-}
 
+```{=html}
+<style>
+.language-switcher {
+    font-size: 22px;
+    text-align: right;
+    margin-right: 0.2em;
+    margin-bottom: 2em;
+}
+
+.language-switcher button {
+    font-size: 20px;
+}
+</style>
+
+<div class="language-switcher">
+<a href="https://juliadatascience.io"><button>🇺🇸</button></a>
+<a href="https://juliadatascience.io/pt"><button>🇧🇷</button></a>
+<a href="https://cn.julialang.org/JuliaDataScience/"><button>🇨🇳</botton></a>
+</div>
+```
+
 ```{=comment}
 This file is only included on the website.
 ```
