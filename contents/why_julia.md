@@ -278,7 +278,7 @@ scob(s)
 例如，函数如下：
 
 
-```jl
+```
 function trouble(A::Fox, B::Chicken, C::Chicken)
     return trouble(A, B) || trouble(B, C) || trouble(C, A)
 end
@@ -286,7 +286,7 @@ end
 
 根据上下文，Julia 会将其优化为：
 
-```jl
+```
 function trouble(A::Fox, B::Chicken, C::Chicken)
     return true || false || true
 end
@@ -296,7 +296,7 @@ end
  `trouble(C1::Chicken, C2::Chicken)` 同理。
 然后，编译器进一步优化：
 
-```jl
+```
 function trouble(A::Fox, B::Chicken, C::Chicken)
     return true
 end
